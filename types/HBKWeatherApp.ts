@@ -68,15 +68,15 @@ namespace HBKWeatherApp {
   };
 
   export type ParsedData = {
-    id: string;
-    instruction: string;
-    description: string;
-    messageType: string;
-    status: string;
-    urgency: string;
-    headline: string;
-    effective: string;
-    event: string;
+    id?: string;
+    instruction?: string;
+    description?: string;
+    messageType?: string;
+    status?: string;
+    urgency?: string;
+    headline?: string;
+    effective?: string;
+    event?: string;
   };
 }
 

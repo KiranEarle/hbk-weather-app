@@ -18,7 +18,7 @@ import HBKWeatherApp from "@app-types/HBKWeatherApp";
 export type AlertItemProps = {
   data: HBKWeatherApp.ParsedData[];
   columns: ColumnDef<HBKWeatherApp.ParsedData>[];
-  handleOnClickRow: (id: string) => void;
+  handleOnClickRow: (id?: string) => void;
 };
 
 const AlertTable = ({ data, columns, handleOnClickRow }: AlertItemProps) => {
@@ -86,7 +86,7 @@ const AlertTable = ({ data, columns, handleOnClickRow }: AlertItemProps) => {
             return (
               <tr
                 key={row.id}
-                onClick={() => handleOnClickRow(row.original.id)}
+                onClick={() => handleOnClickRow(row?.original?.id)}
               >
                 {row.getVisibleCells().map((cell) => {
                   return (

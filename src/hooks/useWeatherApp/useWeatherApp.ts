@@ -42,7 +42,7 @@ const useWeatherApp = () => {
     });
   };
 
-  const handleSetDisplayedAlert = (id: string) => {
+  const handleSetDisplayedAlert = (id?: string) => {
     const data = alertData.find((alert) => alert.id === id);
     setDisplayedAlert(data);
   };
