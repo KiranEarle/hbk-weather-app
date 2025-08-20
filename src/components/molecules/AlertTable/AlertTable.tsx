@@ -18,9 +18,10 @@ import HBKWeatherApp from "@app-types/HBKWeatherApp";
 export type AlertItemProps = {
   data: HBKWeatherApp.ParsedData[];
   columns: ColumnDef<HBKWeatherApp.ParsedData>[];
+  handleOnClickRow: (id: string) => void;
 };
 
-const AlertTable = ({ data, columns }: AlertItemProps) => {
+const AlertTable = ({ data, columns, handleOnClickRow }: AlertItemProps) => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
@@ -83,7 +84,10 @@ const AlertTable = ({ data, columns }: AlertItemProps) => {
         <tbody>
           {table.getRowModel().rows.map((row) => {
             return (
-              <tr key={row.id}>
+              <tr
+                key={row.id}
+                onClick={() => handleOnClickRow(row.original.id)}
+              >
                 {row.getVisibleCells().map((cell) => {
                   return (
                     <td key={cell.id}>
