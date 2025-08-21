@@ -20,10 +20,15 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        {!appLoaded && <LoadingSpinner />}
+        <DisplayedAlert {...displayedAlert} />
+        {!appLoaded && (
+          <div className={styles.loader}>
+            <div>Loading Data</div>
+            <LoadingSpinner />
+          </div>
+        )}
         {appLoaded && appState === "LOADED" && (
           <>
-            <DisplayedAlert {...displayedAlert} />
             <AlertTable
               data={alertData}
               columns={columns}
