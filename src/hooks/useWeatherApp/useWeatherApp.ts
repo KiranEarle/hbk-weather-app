@@ -52,6 +52,7 @@ const useWeatherApp = () => {
   const handleSetDisplayedAlert = (id?: string) => {
     const data = alertData.find((alert) => alert.id === id);
     setDisplayedAlert(data);
+    window.scrollTo(0, 0);
   };
 
   const columns = useMemo<ColumnDef<HBKWeatherApp.ParsedData>[]>(

@@ -1,0 +1,39 @@
+.table-container {
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  overflow-x: scroll;
+  margin-bottom: 32px;
+}
+
+.table table {
+  min-width: 998px;
+  border-collapse: collapse;
+}
+
+.thead {
+  height: 70px;
+  text-align: left;
+}
+
+.th {
+  padding-right: 32px;
+  border-bottom: 1px solid #fff;
+}
+
+.header-container {
+  margin-bottom: 16px;
+}
+
+.tr {
+  height: 60px;
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
+  border-spacing: 0 16px;
+}
+
+.tr:hover td {
+  text-decoration: underline;
+}
