@@ -3,6 +3,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import getAlerts from "@services/getAlerts";
 import HBKWeatherApp from "@app-types/HBKWeatherApp";
 import { APP_STATE } from "@constants/constants";
+import moment from "moment-timezone";
 
 const useWeatherApp = () => {
   const [alertData, setAlertData] = useState<HBKWeatherApp.ParsedData[]>([]);
@@ -16,30 +17,36 @@ const useWeatherApp = () => {
   const parseAlertData = (
     props: HBKWeatherApp.WeatherAlertFeature[]
   ): HBKWeatherApp.ParsedData[] => {
-    return props.map((data) => {
-      const {
-        instruction,
-        description,
-        messageType,
-        status,
-        urgency,
-        headline,
-        effective,
-        event,
-        id,
-      } = data.properties;
-      return {
-        id,
-        instruction,
-        description,
-        messageType,
-        status,
-        urgency,
-        headline,
-        effective,
-        event,
-      };
-    });
+    return props
+      .map((data) => {
+        const {
+          instruction,
+          description,
+          messageType,
+          status,
+          urgency,
+          headline,
+          effective,
+          event,
+          id,
+        } = data.properties;
+        if (event.toLowerCase() === "test message") return;
+
+        return {
+          id,
+          instruction,
+          description,
+          messageType,
+          status,
+          urgency,
+          headline,
+          effective: moment(effective)
+            .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
+            .format("DD-MM-YYYY HH:mm z"),
+          event,
+        };
+      })
+      .filter((data) => data) as HBKWeatherApp.ParsedData[];
   };
 
   const handleSetDisplayedAlert = (id?: string) => {

@@ -1,0 +1,47 @@
+.container {
+  border: 1px solid white;
+  border-radius: 25px;
+  min-height: 100px;
+}
+
+.no-data {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.data-container {
+  padding: 16px 32px;
+}
+
+.title {
+  margin-bottom: 32px;
+}
+
+.title h2 {
+  margin-bottom: 12px;
+}
+
+.meta {
+  display: flex;
+  border-bottom: 1px solid white;
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+}
+
+.meta-item {
+  flex-grow: 1;
+}
+
+.description {
+  margin-bottom: 28px;
+}
+
+.instructions {
+  margin-bottom: 28px;
+}
+
+.instructions span {
+  font-weight: 700;
+}

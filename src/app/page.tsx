@@ -1,9 +1,12 @@
 "use client";
 
-import AlertTable from "@components/molecules/AlertTable";
 import styles from "./page.module.css";
-import useWeatherApp from "@hooks/useWeatherApp/useWeatherApp";
+
+import AlertTable from "@components/molecules/AlertTable";
 import DisplayedAlert from "@components/molecules/DisplayedAlert";
+import LoadingSpinner from "@components/atoms/LoadingSpinner";
+
+import useWeatherApp from "@hooks/useWeatherApp/useWeatherApp";
 
 export default function Home() {
   const {
@@ -14,16 +17,20 @@ export default function Home() {
     handleSetDisplayedAlert,
     displayedAlert,
   } = useWeatherApp();
-  console.log({ alertData, appState, appLoaded });
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <DisplayedAlert {...displayedAlert} />
-        <AlertTable
-          data={alertData}
-          columns={columns}
-          handleOnClickRow={handleSetDisplayedAlert}
-        />
+        {!appLoaded && <LoadingSpinner />}
+        {appLoaded && appState === "LOADED" && (
+          <>
+            <DisplayedAlert {...displayedAlert} />
+            <AlertTable
+              data={alertData}
+              columns={columns}
+              handleOnClickRow={handleSetDisplayedAlert}
+            />
+          </>
+        )}
       </main>
       <footer className={styles.footer}></footer>
     </div>

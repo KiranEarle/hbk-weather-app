@@ -1,0 +1,15 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 140px;
+  height: 140px;
+  animation: spin 1s linear infinite;
+}
+
+.spinner path {
+  stroke: white;
+}
