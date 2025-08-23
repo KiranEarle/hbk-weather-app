@@ -16,7 +16,7 @@ const WidgetContainer = ({
   return (
     <div className={styles.widget} style={{ flexGrow }}>
       <h3 className={styles.title}>{title}</h3>
-      <div>{children}</div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };

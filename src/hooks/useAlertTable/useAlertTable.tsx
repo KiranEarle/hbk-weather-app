@@ -38,7 +38,6 @@ const useAlertTable = ({ data }: UseAlertTableProps) => {
         cell: (info) => {
           const value = info.getValue<string>();
           const type = mapSeverityLevel(value);
-          console.log({ type });
           return <Status type={type} text={value} />;
         },
         header: "Severity",

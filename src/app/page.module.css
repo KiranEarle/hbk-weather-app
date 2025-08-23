@@ -33,5 +33,24 @@
 
 .widget-container {
   display: flex;
+  align-items: stretch;
   width: 100%;
+  margin-bottom: var(--space-4);
+}
+
+.first-widget-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 50%;
+}
+
+.first-widget-container > div:first-child {
+  margin-bottom: var(--space-4);
+}
+
+.second-widget-container {
+  width: 50%;
+  flex: 1;
+  margin-left: var(--space-4);
 }

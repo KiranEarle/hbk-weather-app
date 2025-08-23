@@ -1,0 +1,17 @@
+.widget {
+  height: 100%;
+  padding: var(--space-4) 0;
+}
+
+.headline {
+  margin-bottom: var(--space-4);
+}
+
+.status {
+  margin-bottom: var(--space-4);
+}
+
+.meta p {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-2);
+}

@@ -8,19 +8,15 @@
   border: 1px solid var(--neutral-600);
   border-radius: 8px;
   box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.15);
-  margin: var(--space-4);
-}
-
-.widget:first-child {
-  margin-left: 0;
-}
-
-.widget:last-child {
-  margin-right: 0;
+  height: 100%;
 }
 
 .title {
   color: var(--neutral-400);
   text-transform: uppercase;
   font-size: var(--font-size-sm);
+}
+
+.content {
+  height: 100%;
 }

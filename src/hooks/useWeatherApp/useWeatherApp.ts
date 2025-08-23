@@ -72,6 +72,14 @@ const useWeatherApp = () => {
 
   useEffect(() => {
     init();
+
+    const intervalId = setInterval(() => {
+      init();
+    }, 10000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   return {

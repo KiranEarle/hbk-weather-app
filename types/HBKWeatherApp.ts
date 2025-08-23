@@ -78,6 +78,7 @@ namespace HBKWeatherApp {
     headlineAbb?: string;
     effective?: string;
     event?: string;
+    severity?: string;
   };
 
   export type SeverityColors = "red" | "grey" | "green" | "blue" | "yellow";
