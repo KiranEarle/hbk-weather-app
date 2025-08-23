@@ -5,8 +5,8 @@ import styles from "./page.module.css";
 import AlertTable from "@components/molecules/AlertTable";
 import DisplayedAlert from "@components/molecules/DisplayedAlert";
 import LoadingSpinner from "@components/atoms/LoadingSpinner";
-
-import useWeatherApp from "@hooks/useWeatherApp/useWeatherApp";
+import AlertMap from "@components/molecules/AlertMap";
+import useWeatherApp from "@hooks/useWeatherApp";
 
 export default function Home() {
   const {
@@ -27,14 +27,15 @@ export default function Home() {
             <LoadingSpinner />
           </div>
         )}
+        {/* <AlertMap /> */}
         {appLoaded && appState === "LOADED" && (
-          <>
+          <div className={styles.table}>
             <AlertTable
               data={alertData}
               columns={columns}
               handleOnClickRow={handleSetDisplayedAlert}
             />
-          </>
+          </div>
         )}
       </main>
       <footer className={styles.footer}></footer>

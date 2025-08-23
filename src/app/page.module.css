@@ -13,3 +13,8 @@
   flex-direction: column;
   height: 500px;
 }
+
+.table {
+  display: flex;
+  justify-content: center;
+}

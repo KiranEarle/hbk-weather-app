@@ -75,6 +75,7 @@ namespace HBKWeatherApp {
     status?: string;
     urgency?: string;
     headline?: string;
+    headlineAbb?: string;
     effective?: string;
     event?: string;
   };

@@ -29,6 +29,7 @@ const useWeatherApp = () => {
           effective,
           event,
           id,
+          severity,
         } = data.properties;
         if (event.toLowerCase() === "test message") return;
 
@@ -40,6 +41,8 @@ const useWeatherApp = () => {
           status,
           urgency,
           headline,
+          headlineAbb: `${headline.substring(0, 50)}...`,
+          severity,
           effective: moment(effective)
             .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
             .format("DD-MM-YYYY HH:mm z"),
@@ -68,12 +71,17 @@ const useWeatherApp = () => {
         header: "Message Type",
       },
       {
+        accessorKey: "severity",
+        cell: (info) => info.getValue(),
+        header: "Severity",
+      },
+      {
         accessorKey: "event",
         cell: (info) => info.getValue(),
         header: "Event",
       },
       {
-        accessorKey: "headline",
+        accessorKey: "headlineAbb",
         cell: (info) => info.getValue(),
         header: "Headline",
       },

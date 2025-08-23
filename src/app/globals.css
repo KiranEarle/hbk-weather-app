@@ -1,13 +1,70 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --white: #ffffff;
+  --black: #171717;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --indigo-900: #281d5c; /* Deep Indigo */
+  --indigo-800: #38277c; /* Midnight Indigo */
+  --indigo-700: #1f1d47; /* Royal Indigo (base) */
+  --indigo-500: #6550b3; /* Violet Indigo */
+  --indigo-300: #8372c4; /* Lavender Indigo */
+  --indigo-100: #afa0dc; /* Soft Lilac */
+
+  --coral-700: #cc594e; /* Deep Coral */
+  --coral-500: #ff6f61; /* Vibrant Coral */
+  --coral-300: #ff9287; /* Soft Coral */
+
+  --neutral-50: #ffffff; /* Pure White */
+  --neutral-100: #f8f8fa; /* Ghost White */
+  --neutral-200: #e0e0e6; /* Silver Mist */
+  --neutral-400: #9a9ab0; /* Cool Gray */
+  --neutral-600: #6b6b80; /* Storm Gray */
+  --neutral-900: #1e1e2e; /* Almost Black */
+
+  --success-500: #4caf50; /* Emerald Green */
+  --warning-500: #ffc107; /* Golden Amber */
+  --error-500: #e53935; /* Crimson Red */
+  --info-500: #2196f3; /* Sky Blue */
+
+  --shadow-light: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-heavy: 0px 8px 16px rgba(0, 0, 0, 0.16);
+
+  /* Font sizes */
+  --font-size-xxs: 0.625rem; /* 10px */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.75rem; /* 60px */
+  --font-size-7xl: 4.5rem; /* 72px */
+  --font-size-8xl: 6rem; /* 96px */
+  --font-size-9xl: 8rem; /* 128px */
+
+  /* Spacing */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-7: 1.75rem; /* 28px */
+  --space-8: 2rem; /* 32px */
+  --space-9: 2.25rem; /* 36px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+  --space-32: 8rem; /* 128px */
+  --space-40: 10rem; /* 160px */
+  --space-48: 12rem; /* 192px */
+  --space-56: 14rem; /* 224px */
+  --space-64: 16rem; /* 256px */
 }
 
 html,
@@ -17,8 +74,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--white);
+  background: var(--indigo-700);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

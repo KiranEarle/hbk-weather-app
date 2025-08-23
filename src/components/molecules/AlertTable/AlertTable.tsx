@@ -1,19 +1,9 @@
-import { useState } from "react";
-
-import {
-  ColumnFiltersState,
-  ColumnDef,
-  flexRender,
-  useReactTable,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getSortedRowModel,
-  getPaginationRowModel,
-} from "@tanstack/react-table";
+import { ColumnDef, flexRender } from "@tanstack/react-table";
 
 import Filter from "@components/molecules/Filter";
 
 import HBKWeatherApp from "@app-types/HBKWeatherApp";
+import useAlertTable from "@hooks/useAlertTable";
 
 import styles from "./alert-table.module.css";
 
@@ -24,23 +14,8 @@ export type AlertItemProps = {
 };
 
 const AlertTable = ({ data, columns, handleOnClickRow }: AlertItemProps) => {
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const table = useAlertTable({ data, columns });
 
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      columnFilters,
-    },
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    debugTable: true,
-    debugHeaders: true,
-    debugColumns: false,
-  });
   return (
     <div className={styles["table-container"]}>
       <div className={styles.table}>
@@ -77,7 +52,7 @@ const AlertTable = ({ data, columns, handleOnClickRow }: AlertItemProps) => {
                             }[header.column.getIsSorted() as string] ?? null}
                           </div>
                           {header.column.getCanFilter() ? (
-                            <div>
+                            <div className={styles.filter}>
                               <Filter column={header.column} />
                             </div>
                           ) : null}
