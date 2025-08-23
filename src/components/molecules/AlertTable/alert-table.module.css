@@ -3,10 +3,8 @@
 }
 
 .table {
-  max-width: 1200px;
-  margin: auto;
   overflow-x: scroll;
-  margin-bottom: 32px;
+  margin-bottom: var(--space-8);
   background: linear-gradient(
     136deg,
     rgba(46, 51, 90, 1) 38%,
@@ -52,7 +50,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
   border-spacing: 0 16px;
-  /* background-color: var(--indigo-500); */
 }
 
 .tr:last-child {
@@ -65,7 +62,6 @@
 }
 
 .tr:hover td {
-  text-decoration: underline;
   background-color: var(--indigo-100);
 }
 

@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <DisplayedAlert {...displayedAlert} />
+        {/* <DisplayedAlert {...displayedAlert} /> */}
         {!appLoaded && (
           <div className={styles.loader}>
             <div>Loading Data</div>
@@ -28,6 +28,7 @@ export default function Home() {
         {/* <AlertMap /> */}
         {appLoaded && appState === "LOADED" && (
           <div className={styles.table}>
+            <h2 className={styles.title}>Weather alert</h2>
             <AlertTable
               data={alertData}
               handleOnClickRow={handleSetDisplayedAlert}
