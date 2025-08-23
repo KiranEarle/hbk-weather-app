@@ -10,11 +10,14 @@ import {
   getPaginationRowModel,
 } from "@tanstack/react-table";
 
+import Status from "@components/atoms/Status";
+
+import mapSeverityLevel from "@helpers/mapSeverityLevel";
+
 import HBKWeatherApp from "@app-types/HBKWeatherApp";
 
 export type UseAlertTableProps = {
   data: HBKWeatherApp.ParsedData[];
-  // columns: ColumnDef<HBKWeatherApp.ParsedData>[];
 };
 
 const useAlertTable = ({ data }: UseAlertTableProps) => {
@@ -32,7 +35,12 @@ const useAlertTable = ({ data }: UseAlertTableProps) => {
       },
       {
         accessorKey: "severity",
-        cell: (info) => info.getValue(),
+        cell: (info) => {
+          const value = info.getValue<string>();
+          const type = mapSeverityLevel(value);
+          console.log({ type });
+          return <Status type={type} text={value} />;
+        },
         header: "Severity",
       },
       {

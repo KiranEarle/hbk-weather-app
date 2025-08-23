@@ -1,16 +1,19 @@
+import HBKWeatherApp from "@app-types/HBKWeatherApp";
+
 import styles from "./status.module.css";
 
 type StatusProps = {
-  type: "red" | "gray" | "green" | "blue" | "yellow";
+  type: HBKWeatherApp.SeverityColors;
   text: string;
 };
 
 const Status = ({ type, text }: StatusProps) => {
+  const dotColor = styles[`${type}-bg`];
   return (
-    <div className={`${styles.status}  ${styles[type]}`}>
-      <span />
-      <span>{text}</span>
-    </div>
+    <span className={`${styles.status}  ${styles[type]}`}>
+      <div className={`${styles.dot} ${dotColor}`} />
+      <span className={styles.text}>{text}</span>
+    </span>
   );
 };
 

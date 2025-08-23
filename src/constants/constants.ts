@@ -9,4 +9,5 @@ export const SEVERITY_LEVELS = {
   Severe: "Severe",
   Moderate: "Moderate",
   Minor: "Minor",
+  Unknown: "Unknown",
 };

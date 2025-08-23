@@ -1,4 +1,4 @@
-import { ColumnDef, flexRender } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 
 import Filter from "@components/molecules/Filter";
 

@@ -5,7 +5,6 @@ import styles from "./page.module.css";
 import AlertTable from "@components/molecules/AlertTable";
 import DisplayedAlert from "@components/molecules/DisplayedAlert";
 import LoadingSpinner from "@components/atoms/LoadingSpinner";
-import AlertMap from "@components/molecules/AlertMap";
 import useWeatherApp from "@hooks/useWeatherApp";
 
 export default function Home() {

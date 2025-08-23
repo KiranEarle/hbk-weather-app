@@ -1,27 +1,69 @@
 .status {
   border-radius: 25px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: var(--space-1);
+}
+
+.status-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  display: inline-block;
+  margin: 0 var(--space-1);
+  border-radius: 50%;
+}
+
+.text {
+  margin-right: var(--space-1);
+}
+
+.red-bg {
+  background-color: var(--status-red-text);
+}
+
+.yellow-bg {
+  background-color: var(--status-yellow-text);
+}
+
+.grey-bg {
+  background-color: var(--status-grey-text);
+}
+
+.blue-bg {
+  background-color: var(--status-blue-text);
+}
+
+.green-bg {
+  background-color: var(--status-green-text);
 }
 
 .red {
-  background-color: var(--error-300);
-  color: var(--error-500);
+  background-color: var(--status-red-bg);
+  color: var(--status-red-text);
 }
 
-.gray {
-  background-color: var(--neutral-200);
-  color: var(--neutral-600);
+.grey {
+  background-color: var(--status-grey-bg);
+  color: var(--status-grey-text);
 }
 
 .green {
-  background-color: var(--success-300);
-  color: var(--success-500);
+  background-color: var(--status-green-bg);
+  color: var(--status-green-text);
 }
 
 .blue {
-  background-color: var(--info-300);
-  color: var(--info-500);
+  background-color: var(--status-blue-bg);
+  color: var(--status-blue-text);
 }
 .yellow {
-  background-color: var(--warning-300);
-  color: var(--warning-500);
+  background-color: var(--status-yellow-bg);
+  color: var(--status-yellow-text);
 }

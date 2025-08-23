@@ -21,16 +21,24 @@
   --neutral-900: #1e1e2e; /* Almost Black */
 
   --success-500: #4caf50; /* Emerald Green */
-  --success-300: #6dad70; /* Emerald Green */
-
   --warning-500: #ffc107; /* Golden Amber */
-  --warning-300: #ffd148;
-
   --error-500: #e53935; /* Crimson Red */
-  --error-300: #f56260;
-
   --info-500: #2196f3; /* Sky Blue */
-  --info-300: #6fb9f6;
+
+  --status-red-text: #d30000;
+  --status-red-bg: #ffe0e0;
+
+  --status-blue-text: #4a4aff;
+  --status-blue-bg: #e6e6f2;
+
+  --status-green-text: #007f00;
+  --status-green-bg: #cdffcd;
+
+  --status-yellow-text: #965e00;
+  --status-yellow-bg: #ffeccc;
+
+  --status-grey-text: #6e6893;
+  --status-grey-bg: #f2f0f9;
 
   --shadow-light: 0px 2px 4px rgba(0, 0, 0, 0.08);
   --shadow-medium: 0px 4px 8px rgba(0, 0, 0, 0.12);
