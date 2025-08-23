@@ -1,0 +1,8 @@
+.container {
+  margin: var(--space-4) 0;
+}
+
+.alert-number {
+  font-size: var(--space-16);
+  text-align: center;
+}

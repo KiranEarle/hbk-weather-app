@@ -3,8 +3,9 @@
 import styles from "./page.module.css";
 
 import AlertTable from "@components/molecules/AlertTable";
-import DisplayedAlert from "@components/molecules/DisplayedAlert";
 import LoadingSpinner from "@components/atoms/LoadingSpinner";
+import WidgetContainer from "@/components/atoms/WidgetContainer";
+import NumberOfAlertsWidget from "@/components/widgets/NumberOfAlertsWidget";
 import useWeatherApp from "@hooks/useWeatherApp";
 
 export default function Home() {
@@ -27,12 +28,23 @@ export default function Home() {
         )}
         {/* <AlertMap /> */}
         {appLoaded && appState === "LOADED" && (
-          <div className={styles.table}>
-            <h2 className={styles.title}>Weather alert</h2>
-            <AlertTable
-              data={alertData}
-              handleOnClickRow={handleSetDisplayedAlert}
-            />
+          <div>
+            <div className={styles["widget-container"]}>
+              <WidgetContainer flexGrow={2} title="Map">
+                Map
+              </WidgetContainer>
+              <WidgetContainer title="Number of alerts">
+                <NumberOfAlertsWidget number={alertData.length} />
+              </WidgetContainer>
+              <WidgetContainer>Map</WidgetContainer>
+            </div>
+            <div className={styles.table}>
+              <h2 className={styles.title}>Weather alert table</h2>
+              <AlertTable
+                data={alertData}
+                handleOnClickRow={handleSetDisplayedAlert}
+              />
+            </div>
           </div>
         )}
       </main>

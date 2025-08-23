@@ -29,9 +29,9 @@ const useAlertTable = ({ data }: UseAlertTableProps) => {
         header: "Effective",
       },
       {
-        accessorKey: "messageType",
+        accessorKey: "headlineAbb",
         cell: (info) => info.getValue(),
-        header: "Message Type",
+        header: "Headline",
       },
       {
         accessorKey: "severity",
@@ -48,16 +48,16 @@ const useAlertTable = ({ data }: UseAlertTableProps) => {
         cell: (info) => info.getValue(),
         header: "Event",
       },
-      {
-        accessorKey: "headlineAbb",
-        cell: (info) => info.getValue(),
-        header: "Headline",
-      },
 
       {
         accessorKey: "urgency",
         cell: (info) => info.getValue(),
         header: "Urgency",
+      },
+      {
+        accessorKey: "messageType",
+        cell: (info) => info.getValue(),
+        header: "Message Type",
       },
     ],
     []

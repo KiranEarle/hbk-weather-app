@@ -29,5 +29,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /* margin: auto; */
+}
+
+.widget-container {
+  display: flex;
+  width: 100%;
 }
