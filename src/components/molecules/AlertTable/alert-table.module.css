@@ -1,12 +1,17 @@
 .table-container {
-  width: 100%;
+  min-width: 100%;
 }
 
 .table {
-  width: 100%;
+  max-width: 1200px;
+  margin: auto;
   overflow-x: scroll;
   margin-bottom: 32px;
-  background-color: var(--indigo-800);
+  background: linear-gradient(
+    136deg,
+    rgba(46, 51, 90, 1) 38%,
+    rgba(69, 39, 139, 1) 75%
+  );
   border: 1px solid var(--neutral-600);
   border-radius: 8px;
   box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.15);
@@ -47,6 +52,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
   border-spacing: 0 16px;
+  /* background-color: var(--indigo-500); */
 }
 
 .tr:last-child {
@@ -60,4 +66,10 @@
 
 .tr:hover td {
   text-decoration: underline;
+  background-color: var(--indigo-100);
+}
+
+.pagination-container {
+  max-width: 1200px;
+  margin: auto;
 }

@@ -1,5 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
-import { ColumnDef } from "@tanstack/react-table";
+import { useState, useEffect } from "react";
 import getAlerts from "@services/getAlerts";
 import HBKWeatherApp from "@app-types/HBKWeatherApp";
 import { APP_STATE } from "@constants/constants";
@@ -58,43 +57,6 @@ const useWeatherApp = () => {
     window.scrollTo(0, 0);
   };
 
-  const columns = useMemo<ColumnDef<HBKWeatherApp.ParsedData>[]>(
-    () => [
-      {
-        accessorKey: "effective",
-        cell: (info) => info.getValue(),
-        header: "Effective",
-      },
-      {
-        accessorKey: "messageType",
-        cell: (info) => info.getValue(),
-        header: "Message Type",
-      },
-      {
-        accessorKey: "severity",
-        cell: (info) => info.getValue(),
-        header: "Severity",
-      },
-      {
-        accessorKey: "event",
-        cell: (info) => info.getValue(),
-        header: "Event",
-      },
-      {
-        accessorKey: "headlineAbb",
-        cell: (info) => info.getValue(),
-        header: "Headline",
-      },
-
-      {
-        accessorKey: "urgency",
-        cell: (info) => info.getValue(),
-        header: "Urgency",
-      },
-    ],
-    []
-  );
-
   const init = async () => {
     try {
       const data = await getAlerts();
@@ -116,7 +78,6 @@ const useWeatherApp = () => {
     alertData,
     appState,
     appLoaded,
-    columns,
     displayedAlert,
     handleSetDisplayedAlert,
   };

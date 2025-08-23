@@ -13,7 +13,6 @@ export default function Home() {
     alertData,
     appState,
     appLoaded,
-    columns,
     handleSetDisplayedAlert,
     displayedAlert,
   } = useWeatherApp();
@@ -32,7 +31,6 @@ export default function Home() {
           <div className={styles.table}>
             <AlertTable
               data={alertData}
-              columns={columns}
               handleOnClickRow={handleSetDisplayedAlert}
             />
           </div>

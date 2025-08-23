@@ -9,12 +9,11 @@ import styles from "./alert-table.module.css";
 
 export type AlertItemProps = {
   data: HBKWeatherApp.ParsedData[];
-  columns: ColumnDef<HBKWeatherApp.ParsedData>[];
   handleOnClickRow: (id?: string) => void;
 };
 
-const AlertTable = ({ data, columns, handleOnClickRow }: AlertItemProps) => {
-  const table = useAlertTable({ data, columns });
+const AlertTable = ({ data, handleOnClickRow }: AlertItemProps) => {
+  const table = useAlertTable({ data });
 
   return (
     <div className={styles["table-container"]}>
@@ -89,7 +88,7 @@ const AlertTable = ({ data, columns, handleOnClickRow }: AlertItemProps) => {
         </table>
       </div>
 
-      <div>
+      <div className={styles["pagination-container"]}>
         <button
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}

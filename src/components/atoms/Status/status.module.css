@@ -1,0 +1,27 @@
+.status {
+  border-radius: 25px;
+}
+
+.red {
+  background-color: var(--error-300);
+  color: var(--error-500);
+}
+
+.gray {
+  background-color: var(--neutral-200);
+  color: var(--neutral-600);
+}
+
+.green {
+  background-color: var(--success-300);
+  color: var(--success-500);
+}
+
+.blue {
+  background-color: var(--info-300);
+  color: var(--info-500);
+}
+.yellow {
+  background-color: var(--warning-300);
+  color: var(--warning-500);
+}
