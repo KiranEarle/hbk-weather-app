@@ -29,9 +29,11 @@ const useWeatherApp = () => {
           event,
           id,
           severity,
+          affectedZones,
+          expires,
         } = data.properties;
         if (event.toLowerCase() === "test message") return;
-
+        const geometry = { geometry: data.geometry };
         return {
           id,
           instruction,
@@ -46,6 +48,9 @@ const useWeatherApp = () => {
             .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
             .format("DD-MM-YYYY HH:mm z"),
           event,
+          affectedZones,
+          ...geometry,
+          expires,
         };
       })
       .filter((data) => data) as HBKWeatherApp.ParsedData[];
@@ -61,7 +66,7 @@ const useWeatherApp = () => {
     setAppState(APP_STATE.DASHBOARD);
   };
 
-  const init = async () => {
+  const loadAlerts = async () => {
     try {
       const data = await getAlerts();
       const parsedData = parseAlertData(data.features);
@@ -76,19 +81,7 @@ const useWeatherApp = () => {
   };
 
   useEffect(() => {
-    init();
-
-    const intervalId = setInterval(() => {
-      init();
-    }, 10000);
-
-    if (appState != APP_STATE.DASHBOARD) {
-      clearInterval(intervalId);
-    }
-
-    return () => {
-      clearInterval(intervalId);
-    };
+    loadAlerts();
   }, []);
 
   return {
@@ -98,6 +91,7 @@ const useWeatherApp = () => {
     displayedAlert,
     handleSetDisplayedAlert,
     backToDashboard,
+    loadAlerts,
   };
 };
 

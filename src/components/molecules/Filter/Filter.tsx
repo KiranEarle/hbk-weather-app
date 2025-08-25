@@ -7,7 +7,6 @@ const Filter = ({ column }: { column: Column<HBKWeatherApp.ParsedData> }) => {
   const columnFilterValue = column.getFilterValue();
   return (
     <DebouncedInput
-      className="w-36 border shadow rounded"
       onChange={(value) => column.setFilterValue(value)}
       placeholder={`Search...`}
       type="text"

@@ -1,4 +1,5 @@
 import { AxiosResponse } from "axios";
+import { ColumnMeta, RowData } from "@tanstack/react-table";
 
 /* eslint-disable @typescript-eslint/no-namespace */
 namespace HBKWeatherApp {
@@ -79,9 +80,51 @@ namespace HBKWeatherApp {
     effective?: string;
     event?: string;
     severity?: string;
+    affectedZones?: string[];
+    geometry?: {
+      type: string;
+      coordinates: number[][][];
+    };
+    expires?: string;
   };
 
   export type SeverityColors = "red" | "grey" | "green" | "blue" | "yellow";
+
+  export type WeatherZoneFeature = {
+    "@context": {
+      "@version": string;
+    };
+    id: string;
+    type: "Feature";
+    geometry: {
+      type: "Polygon";
+      coordinates: number[][][]; // array of rings (each ring = array of [lon, lat])
+    };
+    properties: {
+      "@id": string;
+      "@type": string; // "wx:Zone"
+      id: string; // e.g. "NVZ040"
+      type: string; // e.g. "public"
+      name: string; // e.g. "Northwestern Nye County"
+      effectiveDate: string; // ISO date string
+      expirationDate: string; // ISO date string
+      state: string; // state code
+      forecastOffice: string;
+      gridIdentifier: string;
+      awipsLocationIdentifier: string;
+      cwa: string[];
+      forecastOffices: string[];
+      timeZone: string[];
+      observationStations: string[];
+      radarStation: string | null;
+    };
+  };
+}
+
+declare module "@tanstack/react-table" {
+  interface ColumnMeta<TData extends RowData, TValue> {
+    filterVariant?: "text" | "select"; // 👈 add your custom field(s) here
+  }
 }
 
 export default HBKWeatherApp;

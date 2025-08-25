@@ -1,35 +1,42 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Popup, GeoJSON } from "react-leaflet";
+import dynamic from "next/dynamic";
 
-import RequestModule from "@services/RequestModule";
 import getAlertColor from "@/helpers/getAlertColor";
 
 import HBKWeatherApp from "@app-types/HBKWeatherApp";
+
 import "leaflet/dist/leaflet.css";
 
-const MapWidget = () => {
-  const [alerts, setAlerts] = useState<HBKWeatherApp.WeatherAlertFeature[]>([]);
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  { ssr: false }
+);
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false }
+);
 
-  useEffect(() => {
-    async function fetchAlerts() {
-      const request = new RequestModule({
-        endpoint: "/alerts/active?status=actual",
-      });
-      try {
-        const data = await request.get();
-        setAlerts(data.features || []);
-      } catch (err) {
-        console.error("Failed to fetch alerts:", err);
-      }
-    }
-    fetchAlerts();
-  }, []);
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+  ssr: false,
+});
+const GeoJSON = dynamic(
+  () => import("react-leaflet").then((mod) => mod.GeoJSON),
+  { ssr: false }
+);
 
+const MapWidget = ({
+  alerts,
+  center = [39.8283, -98.5795],
+  handleSetDisplayedAlert,
+}: {
+  alerts: Partial<HBKWeatherApp.ParsedData>[];
+  center?: [number, number];
+  handleSetDisplayedAlert?: (id: string) => void;
+}) => {
   return (
     <MapContainer
-      center={[39.8283, -98.5795]}
+      center={center}
       zoom={3}
       style={{ height: "300px", width: "100%" }}
     >
@@ -38,28 +45,27 @@ const MapWidget = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {alerts.map((alert, idx) =>
-        alert.geometry ? (
+      {alerts.map((alert, i) =>
+        alert?.geometry ? (
           <GeoJSON
-            key={idx}
-            data={alert.geometry}
+            key={i}
+            data={alert?.geometry}
             style={() => ({
-              color: getAlertColor(alert.properties.severity),
+              color: getAlertColor(alert?.severity as string),
               weight: 2,
               fillOpacity: 0.3,
             })}
           >
-            <Popup>
-              <b>{alert.properties.event}</b>
-              <br />
-              <i>{alert.properties.headline}</i>
-              <p>{alert.properties.description}</p>
-              <small>
-                Effective: {alert.properties.effective}
-                <br />
-                Expires: {alert.properties.expires}
-              </small>
-            </Popup>
+            {alert?.headline && (
+              <Popup>
+                <p>{alert?.headline}</p>
+                <button
+                  onClick={() => handleSetDisplayedAlert?.(alert?.id as string)}
+                >
+                  more info...
+                </button>
+              </Popup>
+            )}
           </GeoJSON>
         ) : null
       )}

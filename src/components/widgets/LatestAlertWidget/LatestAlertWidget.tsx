@@ -1,6 +1,7 @@
 import styles from "./latest-alert-widget.module.css";
 
 import Status from "@components/atoms/Status";
+import Button from "@components/atoms/Button";
 
 import mapSeverityLevel from "@helpers/mapSeverityLevel";
 
@@ -27,7 +28,7 @@ const LatestAlertWidget = (
         <p>Urgency: {props.urgency}</p>
         <p>{props.description}</p>
       </div>
-      <button onClick={props.handleOnClickMoreDetails}>More details...</button>
+      <Button onClick={props.handleOnClickMoreDetails}>More details...</Button>
     </div>
   );
 };

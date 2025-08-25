@@ -41,6 +41,9 @@ const useAlertTable = ({ data }: UseAlertTableProps) => {
           return <Status type={type} text={value} />;
         },
         header: "Severity",
+        meta: {
+          filterVariant: "select",
+        },
       },
       {
         accessorKey: "event",

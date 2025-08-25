@@ -28,8 +28,20 @@
   margin-bottom: 32px;
 }
 
+@media screen and (max-width: 1024px) {
+  .meta {
+    flex-direction: column;
+  }
+}
+
 .meta-item {
   flex-grow: 1;
+}
+
+@media screen and (max-width: 1024px) {
+  .meta-item {
+    margin-bottom: var(--space-4);
+  }
 }
 
 .description {
@@ -42,4 +54,8 @@
 
 .instructions span {
   font-weight: 700;
+}
+
+.back-button {
+  margin-bottom: var(--space-4);
 }

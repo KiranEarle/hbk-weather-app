@@ -1,0 +1,8 @@
+.select {
+  height: 30px;
+  padding: var(--space-1) var(--space-4);
+  background-color: var(--indigo-500);
+  border: 1px solid var(--indigo-100);
+  border-radius: 4px;
+  color: var(--white);
+}

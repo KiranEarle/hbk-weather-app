@@ -1,5 +1,7 @@
 import { flexRender } from "@tanstack/react-table";
+import { SEVERITY_LEVELS } from "@constants/constants";
 
+import Select from "@components/atoms/Select";
 import Filter from "@components/molecules/Filter";
 import AlertTablePagination from "@components/molecules/AlertTablePagination";
 
@@ -24,6 +26,7 @@ const AlertTable = ({ data, handleOnClickRow }: AlertItemProps) => {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
+                  console.log(header?.column?.columnDef?.meta?.filterVariant);
                   return (
                     <th
                       className={styles.th}
@@ -53,7 +56,17 @@ const AlertTable = ({ data, handleOnClickRow }: AlertItemProps) => {
                           </div>
                           {header.column.getCanFilter() ? (
                             <div className={styles.filter}>
-                              <Filter column={header.column} />
+                              {header?.column?.columnDef?.meta?.filterVariant
+                                ?.search ? (
+                                <Select
+                                  options={Object.values(SEVERITY_LEVELS)}
+                                  onChange={(e) =>
+                                    header.column.setFilterValue(e.target.value)
+                                  }
+                                />
+                              ) : (
+                                <Filter column={header.column} />
+                              )}
                             </div>
                           ) : null}
                         </>
