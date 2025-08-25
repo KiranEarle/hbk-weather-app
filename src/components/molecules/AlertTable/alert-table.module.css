@@ -64,8 +64,3 @@
 .tr:hover td {
   background-color: var(--indigo-100);
 }
-
-.pagination-container {
-  max-width: 1200px;
-  margin: auto;
-}

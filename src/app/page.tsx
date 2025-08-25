@@ -1,14 +1,18 @@
 "use client";
 
-import styles from "./page.module.css";
-
-import AlertTable from "@components/molecules/AlertTable";
 import LoadingSpinner from "@components/atoms/LoadingSpinner";
 import WidgetContainer from "@/components/atoms/WidgetContainer";
+
+import AlertTable from "@components/molecules/AlertTable";
+import DisplayedAlert from "@components/molecules/DisplayedAlert";
+
 import NumberOfAlertsWidget from "@components/widgets/NumberOfAlertsWidget";
-import MapWidget from "@components/widgets/MapWidget/MapWidget";
-import useWeatherApp from "@hooks/useWeatherApp";
 import LatestAlertWidget from "@/components/widgets/LatestAlertWidget";
+import MapWidget from "@components/widgets/MapWidget/MapWidget";
+
+import useWeatherApp from "@hooks/useWeatherApp";
+
+import styles from "./page.module.css";
 
 export default function Home() {
   const {
@@ -17,21 +21,20 @@ export default function Home() {
     appLoaded,
     handleSetDisplayedAlert,
     displayedAlert,
+    backToDashboard,
   } = useWeatherApp();
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        {/* <DisplayedAlert {...displayedAlert} /> */}
         {!appLoaded && (
           <div className={styles.loader}>
             <div>Loading Data</div>
             <LoadingSpinner />
           </div>
         )}
-        {/* <AlertMap /> */}
-        {appLoaded && appState === "LOADED" && (
+        {appLoaded && appState === "DASHBOARD" && (
           <div>
-            <h1>Dashboard</h1>
+            <h1 className={styles["page-title"]}>Dashboard</h1>
             <div className={styles["widget-container"]}>
               <div className={styles["first-widget-container"]}>
                 <WidgetContainer flexGrow={1} title="Map">
@@ -60,6 +63,12 @@ export default function Home() {
               />
             </div>
           </div>
+        )}
+        {appLoaded && appState === "MORE_INFO" && (
+          <DisplayedAlert
+            {...displayedAlert}
+            backToDashboardHandler={backToDashboard}
+          />
         )}
       </main>
       <footer className={styles.footer}></footer>

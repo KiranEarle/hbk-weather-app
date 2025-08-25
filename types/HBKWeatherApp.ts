@@ -6,7 +6,7 @@ namespace HBKWeatherApp {
     public abstract get<T>(endpoint: string): Promise<AxiosResponse<T>>;
   }
 
-  export type AppState = "LOADING" | "LOADED" | "ERROR";
+  export type AppState = "LOADING" | "DASHBOARD" | "MORE_INFO" | "ERROR";
 
   export type WeatherAlertFeature = {
     id: string;

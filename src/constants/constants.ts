@@ -1,6 +1,7 @@
 export const APP_STATE = {
   LOADING: "LOADING",
-  LOADED: "LOADED",
+  DASHBOARD: "DASHBOARD",
+  MORE_INFO: "MORE_INFO",
   ERROR: "ERROR",
 } as const;
 

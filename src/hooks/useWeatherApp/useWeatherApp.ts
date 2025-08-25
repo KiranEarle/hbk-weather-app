@@ -54,7 +54,11 @@ const useWeatherApp = () => {
   const handleSetDisplayedAlert = (id?: string) => {
     const data = alertData.find((alert) => alert.id === id);
     setDisplayedAlert(data);
-    window.scrollTo(0, 0);
+    setAppState(APP_STATE.MORE_INFO);
+  };
+
+  const backToDashboard = () => {
+    setAppState(APP_STATE.DASHBOARD);
   };
 
   const init = async () => {
@@ -62,7 +66,8 @@ const useWeatherApp = () => {
       const data = await getAlerts();
       const parsedData = parseAlertData(data.features);
       setAlertData(parsedData);
-      setAppState(APP_STATE.LOADED);
+
+      setAppState(APP_STATE.DASHBOARD);
     } catch (e) {
       setAppState(APP_STATE.ERROR);
     } finally {
@@ -77,6 +82,10 @@ const useWeatherApp = () => {
       init();
     }, 10000);
 
+    if (appState != APP_STATE.DASHBOARD) {
+      clearInterval(intervalId);
+    }
+
     return () => {
       clearInterval(intervalId);
     };
@@ -88,6 +97,7 @@ const useWeatherApp = () => {
     appLoaded,
     displayedAlert,
     handleSetDisplayedAlert,
+    backToDashboard,
   };
 };
 

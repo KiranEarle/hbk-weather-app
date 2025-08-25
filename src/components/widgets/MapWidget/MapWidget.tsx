@@ -2,28 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Popup, GeoJSON } from "react-leaflet";
+
+import RequestModule from "@services/RequestModule";
+import getAlertColor from "@/helpers/getAlertColor";
+
+import HBKWeatherApp from "@app-types/HBKWeatherApp";
 import "leaflet/dist/leaflet.css";
 
-function getAlertColor(severity: string) {
-  if (severity === "Extreme") return "#FF0000";
-  if (severity === "Severe") return "#FF7F00";
-  if (severity === "Moderate") return "#FFD700";
-  if (severity === "Moderate") return "#32CD32";
-  if (severity === "Minor") return "#C0C0C0";
-  return "#1E90FF";
-}
-
 const MapWidget = () => {
-  const [alerts, setAlerts] = useState([]);
+  const [alerts, setAlerts] = useState<HBKWeatherApp.WeatherAlertFeature[]>([]);
 
   useEffect(() => {
     async function fetchAlerts() {
+      const request = new RequestModule({
+        endpoint: "/alerts/active?status=actual",
+      });
       try {
-        const res = await fetch(
-          "https://api.weather.gov/alerts/active?status=actual"
-        );
-        const data = await res.json();
-
+        const data = await request.get();
         setAlerts(data.features || []);
       } catch (err) {
         console.error("Failed to fetch alerts:", err);

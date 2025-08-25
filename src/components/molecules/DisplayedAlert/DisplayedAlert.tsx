@@ -2,7 +2,13 @@ import HBKWeatherApp from "@app-types/HBKWeatherApp";
 
 import styles from "./display-alert.module.css";
 
-const DisplayedAlert = (props: HBKWeatherApp.ParsedData) => {
+export type DisplayedAlertProps = {
+  backToDashboardHandler: () => void;
+};
+
+const DisplayedAlert = (
+  props: HBKWeatherApp.ParsedData & DisplayedAlertProps
+) => {
   const hasDataId = props.hasOwnProperty("id");
   return (
     <div className={styles.container}>
@@ -13,6 +19,9 @@ const DisplayedAlert = (props: HBKWeatherApp.ParsedData) => {
       )}
       {hasDataId && (
         <div className={styles["data-container"]}>
+          <button onClick={props.backToDashboardHandler}>
+            Back to dashboard...
+          </button>
           <div className={styles.meta}>
             <div className={styles["meta-item"]}>
               <span>Type: {props.messageType}</span>
